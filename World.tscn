@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://fxv6q7hsdm8f"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_8noxd"]
+[ext_resource type="PackedScene" uid="uid://dqp2iduftuq60" path="res://Player.tscn" id="1_fidd5"]
+[ext_resource type="Script" path="res://Player.gd" id="2_127ar"]
+
+[sub_resource type="Gradient" id="Gradient_o5p7w"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.696262, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wjv2g"]
+gradient = SubResource("Gradient_o5p7w")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijknc"]
+size = Vector2(1280, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq8sq"]
+size = Vector2(24, 512)
+
+[sub_resource type="Theme" id="Theme_86mrs"]
+default_font_size = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_caxse"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7sge"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eolyw"]
+
+[sub_resource type="Theme" id="Theme_d1wlk"]
+default_font_size = 16
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_8noxd")
+
+[node name="Player" parent="." instance=ExtResource("1_fidd5")]
+position = Vector2(128, 448)
+script = ExtResource("2_127ar")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(184, 552)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(472, 64)
+scale = Vector2(5.125, 208)
+texture = SubResource("GradientTexture1D_wjv2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+position = Vector2(456, 64)
+shape = SubResource("RectangleShape2D_ijknc")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-12, 256)
+shape = SubResource("RectangleShape2D_hq8sq")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1292, 256)
+shape = SubResource("RectangleShape2D_hq8sq")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 384.0
+offset_top = 544.0
+offset_right = 896.0
+offset_bottom = 688.0
+auto_translate = false
+localize_numeral_system = false
+theme = SubResource("Theme_86mrs")
+theme_type_variation = &"test"
+theme_override_colors/background_color = Color(0, 0, 0, 0)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_caxse")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k7sge")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_eolyw")
+editable = false
+context_menu_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+scroll_smooth = true
+scroll_v_scroll_speed = 30.0
+caret_blink = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 536.0
+offset_top = 656.0
+offset_right = 736.0
+offset_bottom = 680.0
+theme = SubResource("Theme_d1wlk")
+text = "press TAB to start writing"
+scroll_active = false
+shortcut_keys_enabled = false
